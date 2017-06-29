@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>xcloud-game</title>
+    <link rel="stylesheet" href="static/ui/css/main.css">
+</head>
+<body>
+    xcloudgame
+    <div ui-view></div>
+    <!--<vi-view></vi-view>-->
+    <script src="static/modules/vendor/angular.js"></script>
+    <script src="static/modules/vendor/angular-ui-router.min.js"></script>
+    <script src="static/modules/vendor/angular-cookies.min.js"></script>
+    <script src="static/modules/vendor/angular-validation.min.js"></script>
+    <script src="static/modules/vendor/angular-animate.min.js"></script>
+    <script src="static/modules/index.js"></script>
+    <script>
+
+        angular.module('app').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+            $stateProvider.state('mian', {
+                url: '/main',
+                templateUrl: 'static/views/home.html',
+                controller: 'mainCtrl'
+            }).state('games',{
+                url: '/games',
+                templateUrl: 'static/views/games.html',
+                controller: 'gamesCtrl'
+            }).state('recharge',{
+                url: '/recharge',
+                templateUrl: 'static/views/recharge.html',
+                controller: 'rechargeCtrl'
+            }).state('support',{
+                url: '/support',
+                templateUrl: 'static/views/support.html',
+                controller: 'supportCtrl'
+            }).state('user',{
+                url: '/user',
+                templateUrl: 'static/views/user.html',
+                controller: 'userCtrl'
+            })
+
+            $urlRouterProvider.otherwise('main');
+        }]);
+        'use strict';
+        angular.module('app').controller('mainCtrl', ['$http', '$scope', function($http, $scope){
+//            $http.get('/data/positionList.json').success(function(resp){
+//                $scope.list = resp;
+//            });
+        }]);
+    </script>
+</body>
+</html>
